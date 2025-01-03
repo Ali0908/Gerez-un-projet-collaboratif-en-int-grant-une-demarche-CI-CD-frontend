@@ -67,7 +67,7 @@ jobs:
       - name: Run Angular tests
         run: |
           cd front
-          npm test
+          npm run test -- --watch=false --browsers=ChromeHeadless
           ng test --code-coverage
 
       - name: Upload frontend test results

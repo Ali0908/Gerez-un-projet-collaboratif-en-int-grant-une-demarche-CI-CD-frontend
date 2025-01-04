@@ -3,7 +3,14 @@ name: Run and coverage tests
 on:
   push:
     branches:
+      - develop
+    paths:
+      - 'front/**'
+  pull_request:
+    branches:
       - main
+    paths:
+      - 'front/**'
 
 jobs:
   frontend-tests:
@@ -30,7 +37,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install 
+        run: npm install
 
       - name: Run Angular tests
         run: npm run test -- --watch=false --browsers=ChromeHeadless

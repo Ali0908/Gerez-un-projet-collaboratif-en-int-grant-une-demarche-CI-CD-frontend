@@ -19,6 +19,9 @@ jobs:
   backend-tests:
     name: Backend Tests
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: back
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -38,8 +41,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Run Maven tests
-        run: |
-          cd back
+        run:
           mvn clean
           mvn test jacoco:report
 

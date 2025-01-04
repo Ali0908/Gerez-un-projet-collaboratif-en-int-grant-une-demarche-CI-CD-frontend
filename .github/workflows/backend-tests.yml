@@ -5,14 +5,15 @@ on:
     branches:
       - develop
     paths:
-      - '../../../back'
-      - 'backend-tests.yml'
+      - 'back/**'
+      - '.github/workflows/backend-tests.yml'
   pull_request:
     branches:
       - main
     paths:
-      - '../../../back'
-      - 'backend-tests.yml'
+      - 'back/**'
+      - '.github/workflows/backend-tests.yml'
+
 
 jobs:
   backend-tests:

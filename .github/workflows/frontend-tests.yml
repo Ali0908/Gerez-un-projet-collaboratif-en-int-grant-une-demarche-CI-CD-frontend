@@ -1,4 +1,4 @@
-name: Run frontend and coverage tests
+name: Run tests and coverage frontend
 
 on:
   push:

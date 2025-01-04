@@ -5,14 +5,14 @@ on:
     branches:
       - develop
     paths:
-      - '../../../front'
-      - 'frontend-tests.yml'
+      - 'front'
+      - 'github/workflows/tests/frontend-tests.yml'
   pull_request:
     branches:
       - main
     paths:
-      - '../../../front'
-      - 'frontend-tests.yml'
+      - 'front'
+      - 'github/workflows/tests/frontend-tests.yml'
 
 jobs:
   frontend-tests:

@@ -41,9 +41,10 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Run Maven tests
-        run:
-          mvn clean
-          mvn test jacoco:report
+        run: mvn clean
+
+      - name: Generate Jacoco report
+        run: mvn test jacoco:report
 
       - name: Upload backend test results
         uses: actions/upload-artifact@v3

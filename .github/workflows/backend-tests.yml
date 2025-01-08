@@ -58,7 +58,22 @@ jobs:
     defaults:
       run:
         working-directory: back
+    services:
+      sonarqube:
+        image: sonarqube:community
+        ports:
+          - 9000:9000
+        options: >-
+          --health-cmd="curl -f http://localhost:9000 || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     steps:
+      - name: Wait for SonarQube to be ready
+        run: |
+          echo "Waiting for SonarQube to start..."
+          timeout 60 sh -c 'until curl -s http://localhost:9000/api/system/status | grep -q UP; do sleep 5; done'
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -72,3 +87,4 @@ jobs:
         run: mvn sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: http://localhost:9000

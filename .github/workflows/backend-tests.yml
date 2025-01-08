@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: backend-test-results
-          path: back/target/site/jacoco
+          path: target/site/jacoco
 
   sonarqube-analysis:
     name: SonarQube Analysis

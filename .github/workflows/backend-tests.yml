@@ -51,10 +51,9 @@ jobs:
           name: backend-test-results
           path: target/site/jacoco
 
-  sonarqube:
-    name: SonarQube analysis
+  sonarcloud-analysis:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -63,7 +62,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 11
-          distribution: 'corretto' # Use Corretto distribution
+          distribution: 'corretto' # Alternative distribution options are available.
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
@@ -79,5 +78,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=key-back -Dsonar.projectName='project-back'
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Ali0908_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD

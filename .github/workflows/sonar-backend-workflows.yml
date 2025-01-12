@@ -1,8 +1,0 @@
-name: SonarQube
-on:
-  push:
-    branches:
-      - sonar-branch
-  pull_request:
-    types: [opened, synchronize, reopened]
-jobs:

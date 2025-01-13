@@ -6,13 +6,13 @@ on:
       - develop
     paths:
       - 'front/**'
-      - '.github/workflows/tests/frontend-tests.yml'
+      - '.github/workflows/frontend-tests.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'front/**'
-      - '.github/workflows/tests/frontend-tests.yml'
+      - '.github/workflows/frontend-tests.yml'
 
 jobs:
   frontend-tests:
@@ -49,3 +49,14 @@ jobs:
         with:
           name: frontend-test-results
           path: front/coverage
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

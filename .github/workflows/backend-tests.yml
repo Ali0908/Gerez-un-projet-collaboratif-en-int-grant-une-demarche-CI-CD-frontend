@@ -3,7 +3,7 @@ name: Run tests, coverage, and SonarQube analysis backend
 on:
   push:
     branches:
-      - develop
+      - sonar-branch
     paths:
       - 'back/**'
       - '.github/workflows/backend-tests.yml'
